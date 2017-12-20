@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="list-group">
+  <% @posts.each do |post| %>
+      <a href="/posts/<%=post.id%> " class="list-group-item">
+        <h3 class="list-group-item-heading"><%= post.title %></h3>
+        <p class="list-group-item-text"><%= post.body %></p>
+        <p><%= post.created_at.strftime("%Y-%m-%d") %></p>
+        <p>created by <%= post.user.email %></p>
+      </a>
+  <% end %>
+    </div>
+  </div>
+</div>
+
