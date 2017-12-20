@@ -6,7 +6,11 @@
       </div>
 
       <div class="form-group">
-        <%= f.text_area :body, class: "form-control input-lg", placeholder: "body" %>
+        <%= f.text_field :img_url, class: "form-control input-lg", placeholder: "img_url" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_area :body, rows: "15", class: "form-control input-lg", placeholder: "body" %>
       </div>
 
       <%= f.submit "Edit Post!", class: "btn-success btn-block btn-lg" %>

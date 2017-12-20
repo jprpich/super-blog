@@ -25,3 +25,7 @@ h1 {
 a.list-group-item .list-group-item-heading{
   color: #4cae4c;
 }
+
+.img-responsive {
+  height: 350px;
+}
