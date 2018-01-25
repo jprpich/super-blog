@@ -1,14 +1,20 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <div class="list-group">
   <% @posts.each do |post| %>
-      <a href="/posts/<%=post.id%> " class="list-group-item">
-        <h3 class="list-group-item-heading"><%= post.title %></h3>
-        <img src="<%= post.img_url %>" class = "img-responsive">
-        <p class="list-group-item-text"><%= post.body %></p>
-        <p><%= post.created_at.strftime("%Y-%m-%d") %></p>
-        <p>created by <%= post.user.email %></p>
-      </a>
+        <a href="/posts/<%=post.id%>"><h1><%= post.title %></h1></a>
+        <p class="author">created by <%= post.user.email %>,
+        <% if post.created_at > Time.now.beginning_of_day %>
+            <%="#{time_ago_in_words(post.created_at)} ago"%>
+        <% else %>
+            on <%= post.created_at.strftime("%b %d, %Y") %>
+        <% end %>
+        </p>
+        <p><%= truncate(strip_tags(markdown(post.body)),length: 250)%></p>
+        <% if user_signed_in? && current_user == post.user %>
+          <%= link_to link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_post_path(post) %>
+          <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, post_path(post), method: :delete, data: {confirm: 'Are you sure?'} %>
+        <% end %>
+        <hr>
   <% end %>
     </div>
   </div>

@@ -19,8 +19,13 @@ body {
 }
 
 h1 {
-  color: #4cae4c;
+  color: #286090;
 }
+
+.comments h2 {
+  color: navy;
+}
+
 
 a.list-group-item .list-group-item-heading{
   color: #4cae4c;
@@ -28,4 +33,23 @@ a.list-group-item .list-group-item-heading{
 
 .img-responsive {
   height: 350px;
+  width: 700px;
 }
+
+h3 {
+  color: navy;
+}
+
+p.author {
+  color: gray;
+}
+
+.glyphicon-pencil:before {
+  color: orange;
+  margin-right: 10px;
+}
+
+.glyphicon-trash:before {
+  color: navy;
+}
+

@@ -11,9 +11,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(posts_params)
-    @post.save
-    
-    redirect_to @post
+    if @post.save
+      redirect_to @post
+    else
+      @errors = @post.errors.full_messages
+      render :new  
+    end
   end
 
   def show
@@ -26,9 +29,12 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(posts_params)
-
-    redirect_to @post
+    if @post.update(posts_params)
+      redirect_to @post
+    else
+      @errors = @post.errors.full_messages
+      render :edit
+    end
   end
 
   def destroy
